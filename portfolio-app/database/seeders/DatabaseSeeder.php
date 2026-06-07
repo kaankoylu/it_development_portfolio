@@ -15,19 +15,19 @@ class DatabaseSeeder extends Seeder
     use WithoutModelEvents;
 
     /**
-     * Seed the application's database.
+     * fpr seeding the application's database, everything handles here instead of seperate files because there is not too much need for it
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
+        // creating the admin profile
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
         ]);
 
-        // 2. Create a default Bio record
+        // default biography
         Biography::updateOrCreate(
             ['id' => 1],
             [
@@ -38,11 +38,13 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 3. Clear old sample data to avoid duplicates on re-run
+        // clearing old sample data to stop the duplicates
         Post::truncate();
         CourseProgress::truncate();
 
-        // 4. Create Blog Workflow Samples
+        // this is the BLOG page workflow, i fill it with mock information for showcase purposes, texts are ai generated.
+        // also, blog posts has different "status" every status has a differnet consequence.
+        //DRAFT means visitors cant see it, REVIEW means it should be checked but done, PUBLISHED means it is seenable by everyone
         Post::create([
             'title' => 'My First Draft Idea',
             'content' => 'This is a draft post. Visitors should NOT be able to see this on the homepage.',
@@ -61,7 +63,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'published',
         ]);
 
-        // 5. Create Academic Progress Samples
+        // Academic Progress Samples
         CourseProgress::create([
             'course_name' => 'Introduction to Software Engineering',
             'credits_ec' => 5,
@@ -73,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'course_name' => 'Databases and Persistent Data',
             'credits_ec' => 5,
             'status' => 'in_progress',
-            'grade' => null,
+            'grade' => null, //null for now, will check it out when i have time ****FLAG******
         ]);
     }
 }
