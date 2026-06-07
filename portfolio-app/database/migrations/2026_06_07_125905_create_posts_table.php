@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            // Workflow tracking: draft, review, published
+            $table->enum('status', ['draft', 'review', 'published'])->default('draft');
             $table->timestamps();
         });
     }

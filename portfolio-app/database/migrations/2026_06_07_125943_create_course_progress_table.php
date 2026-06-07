@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('course_progress', function (Blueprint $table) {
             $table->id();
+            $table->string('course_name');
+            $table->integer('credits_ec');
+            $table->enum('status', ['not_started', 'in_progress', 'completed'])->default('not_started');
+            $table->decimal('grade', 3, 1)->nullable();
             $table->timestamps();
         });
     }

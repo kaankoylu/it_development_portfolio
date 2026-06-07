@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('biographies', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name');
+            $table->string('title'); // e.g., "Software Engineering Student"
+            $table->text('bio_text');
+            $table->string('skills'); // Comma-separated list
             $table->timestamps();
         });
     }
