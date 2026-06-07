@@ -1,0 +1,13 @@
+deptrac:
+  layers:
+    - name: Controllers
+      collectors:
+        - type: directory
+          value: app/Http/Controllers
+    - name: Models
+      collectors:
+        - type: directory
+          value: app/Models
+  ruleset:
+    Controllers:
+      - Models
