@@ -1,0 +1,35 @@
+name: Project Quality checks
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  compliance-matrix:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup PHP Environment
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        tools: phpstan, phpcs, composer
+
+    - name: Copy Environment conf file as a new instead of .example
+      run: cp .env.example .env
+
+    - name: Installing Project Dependencies
+      run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+    - name: PSR-12 Code Style Compliance (PHPCS)
+      run: vendor/bin/phpcs --standard=PSR12 app/
+
+    - name: Run Static Code Analysis Level 8 (PHPStan)
+      run: vendor/bin/phpstan analyse
+
+    - name: Execute Architectural Layer Dependency Check (Deptrac)
+      run: vendor/bin/deptrac
