@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseProgress extends Model
 {
-    //
+    protected $guarded = [];
 }
