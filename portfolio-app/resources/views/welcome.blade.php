@@ -21,9 +21,9 @@
         <div class="main_text">
             <p class="main_subject">Welcome to the website.</p>
             <p>here is the quick informations about structure and content of the site:</p>
-            <li>- Conversion complete: Interactive web application driven by Laravel PHP.</li>
-            <li>- Total ECs Earned dynamically calculated: <strong>{{ $totalEC }} EC</strong></li>
-            <li>- Dynamic database systems: Swapped flat html lists for active model queries.</li>
+            <li>Conversion complete: Interactive web application driven by Laravel PHP.</li>
+            <li>Total ECs Earned dynamically calculated: <strong>{{ $totalEC }} EC</strong></li>
+            <li>Dynamic database systems: Swapped flat html lists for active model queries.</li>
         </div>
         <div class="list_elements">
             <li class="subject">The meanings of the icons are:</li>
@@ -81,6 +81,7 @@
 
     <div style="display: none;" class="toggle_content" id="dashboard_card">
         <button id="dashboard_card_closer" class="close_button"><img src="{{ asset('images/close.png') }}"></button>
+        <li>Total ECs Earned dynamically calculated: <strong>{{ $totalEC }} EC</strong></li>
         <table border="1">
             <thead>
                 <tr>
@@ -88,7 +89,7 @@
                     <td>EC</td>
                     <td>Status</td>
                     <td>Grade</td>
-                    <td class="completion">Completion</td>
+                    <!-- <td class="completion">Completion</td> -->
                 </tr>
             </thead>
             <tbody>
@@ -98,7 +99,7 @@
                     <td>{{ $course->credits_ec }}</td>
                     <td>{{ $course->status }}</td>
                     <td><strong>{{ $course->grade ?? 'N/A' }}</strong></td>
-                    <td class="completion"><input type="checkbox" {{ $course->status === 'Passed' ? 'checked' : '' }}></td>
+                    <!-- <td class="completion"><input type="checkbox" {{ $course->status === 'Passed' ? 'checked' : '' }}></td> -->
                 </tr>
                 @endforeach
             </tbody>

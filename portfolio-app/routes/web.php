@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,11 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/owner/posts/{post}', [PortfolioController::class, 'updatePostStatus'])->name('owner.post.update');
     Route::delete('/owner/posts/{post}', [PortfolioController::class, 'destroyPost'])->name('owner.post.destroy');
     Route::post('/owner/courses', [PortfolioController::class, 'storeCourse'])->name('owner.course.store');
+    Route::post('/owner/course', [CourseController::class, 'store'])->name('owner.course.store');
+    Route::get('/owner/course/{course}/edit', [CourseController::class, 'edit'])->name('owner.course.edit');
+    Route::put('/owner/course/{course}', [CourseController::class, 'update'])->name('owner.course.update');
+    Route::delete('/owner/course/{course}', [CourseController::class, 'destroy'])->name('owner.course.destroy');
+    Route::patch('/owner/courses/bulk-update', [CourseController::class, 'bulkUpdate'])->name('owner.courses.bulkUpdate');
 });
 
 require __DIR__ . '/auth.php';
