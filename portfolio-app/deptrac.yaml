@@ -1,4 +1,8 @@
 deptrac:
+  # i updated this because it was looking to wrong path
+  paths:
+    - app
+
   layers:
     - name: Controllers
       collectors:
