@@ -9,9 +9,11 @@ Route::get('/', function () {
 });
 
 // REMOVED BECAUSE IT CAUSED ME TO VISIT THE DEFULT DASHBOARD PAGE INSTEAD OF owner/dashboard
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+//***UPDATE*** i brought it back because artisan test was giving errors.
+//current difference is IT IS COMPLETELY OVERRIDEN BY AuthTest.php to return owner.dashboard whatever the case is
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,4 +35,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/owner/courses', [PortfolioController::class, 'storeCourse'])->name('owner.course.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
