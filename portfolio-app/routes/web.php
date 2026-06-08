@@ -27,7 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/owner/dashboard', [PortfolioController::class, 'dashboard'])->name('owner.dashboard');
     Route::post('/owner/bio', [PortfolioController::class, 'updateBio'])->name('owner.bio.update');
     Route::post('/owner/posts', [PortfolioController::class, 'storePost'])->name('owner.post.store');
+    Route::patch('/owner/posts/bulk-update', [PortfolioController::class, 'bulkUpdatePosts'])->name('owner.posts.bulkUpdate');
     Route::patch('/owner/posts/{post}', [PortfolioController::class, 'updatePostStatus'])->name('owner.post.update');
+    Route::delete('/owner/posts/{post}', [PortfolioController::class, 'destroyPost'])->name('owner.post.destroy');
     Route::post('/owner/courses', [PortfolioController::class, 'storeCourse'])->name('owner.course.store');
 });
 

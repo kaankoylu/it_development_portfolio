@@ -76,13 +76,50 @@
 
         .workflow-item {
             background: rgba(0, 0, 0, 0.3);
-            padding: 12px;
+            padding: 15px;
             border-radius: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 12px;
             border-left: 4px solid gold;
+        }
+
+        @media (min-width: 768px) {
+            .workflow-item {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .workflow-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .workflow-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-danger {
+            background: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-danger:hover {
+            background: #ff3333;
         }
 
         .alert-error {
@@ -209,26 +246,51 @@
 
         <div class="admin-card">
             <h3>Active Blog Workflows</h3>
-            <div style="margin-top: 15px;">
-                @foreach($posts as $post)
-                <div class="workflow-item">
-                    <div>
-                        <strong style="color: #fff; font-size: 15px;">{{ $post->title }}</strong>
-                        <span style="color: #aaa; font-size: 12px; margin-left: 10px;">(Status: <em style="color: gold;">{{ $post->status }}</em>)</span>
+
+            <form action="{{ route('owner.posts.bulkUpdate') }}" method="POST">
+                @csrf
+                @method('PATCH')
+
+                <div style="margin-top: 15px; margin-bottom: 20px;">
+                    @foreach($posts as $post)
+                    <div class="workflow-item">
+                        <div class="workflow-details">
+                            <div style="display: flex; gap: 10px; width: 100%;">
+                                <input type="text" name="posts[{{ $post->id }}][title]" class="form-control" value="{{ $post->title }}" style="font-weight: bold;" required>
+                            </div>
+                            <div style="width: 100%;">
+                                <textarea name="posts[{{ $post->id }}][content]" class="form-control" rows="2" style="font-size: 13px;" required>{{ $post->content }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="workflow-actions">
+                            <select name="posts[{{ $post->id }}][status]" class="form-control" style="width: auto; padding: 5px 10px; height: 38px;">
+                                <option value="draft" {{ $post->status == 'draft' ? 'selected' : '' }}>Draft</option>
+                                <option value="review" {{ $post->status == 'review' ? 'selected' : '' }}>Review</option>
+                                <option value="published" {{ $post->status == 'published' ? 'selected' : '' }}>Publish</option>
+                            </select>
+
+                            <button type="button" class="btn-danger" onclick="if(confirm('Are you sure you want to delete this post?')) { document.getElementById('delete-form-{{ $post->id }}').submit(); }">
+                                Delete
+                            </button>
+                        </div>
                     </div>
-                    <form action="{{ route('owner.post.update', $post) }}" method="POST" style="display: flex; gap: 8px; align-items: center;">
-                        @csrf
-                        @method('PATCH')
-                        <select name="status" class="form-control" style="width: auto; padding: 5px 10px; height: 32px;">
-                            <option value="draft" {{ $post->status == 'draft' ? 'selected' : '' }}>Draft</option>
-                            <option value="review" {{ $post->status == 'review' ? 'selected' : '' }}>Review</option>
-                            <option value="published" {{ $post->status == 'published' ? 'selected' : '' }}>Publish</option>
-                        </select>
-                        <button type="submit" class="btn-submit" style="padding: 5px 12px; height: 32px; font-size: 12px;">Update State</button>
-                    </form>
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
+
+                @if($posts->count() > 0)
+                    <button type="submit" class="btn-submit" style="background: #fff; color: #000; border: 1px solid #ccc;">
+                        Update All Posts Content & States
+                    </button>
+                @endif
+            </form>
+
+            @foreach($posts as $post)
+                <form id="delete-form-{{ $post->id }}" action="{{ route('owner.post.destroy', $post) }}" method="POST" style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
+            @endforeach
         </div>
     </div>
 @endsection

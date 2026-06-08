@@ -14,8 +14,8 @@ class PortfolioController extends Controller
     public function index()
     {
         $bio = Biography::first() ?? new Biography([
-            'full_name' => 'John Doe',
-            'title' => 'Software Engineer in Training',
+            'full_name' => 'Kaan Koylu',
+            'title' => 'Software Engineering student',
             'bio_text' => 'Welcome to my raw portfolio showcase app.',
             'skills' => 'PHP, Laravel, Docker'
         ]);
@@ -23,7 +23,8 @@ class PortfolioController extends Controller
         $posts = Post::where('status', 'published')->latest()->get();
         $courses = CourseProgress::all();
 
-        // this one calculates dashboard status by the credis earned
+        // this one calculates dashboard status by the credis earned, only sums up if the course marked completed
+        // in case the grade is low and course is completed it doesnt matter. it just sums up the credits of the calsses that marked as complet
         $totalEC = $courses->where('status', 'completed')->sum('credits_ec');
 
         return view('welcome', compact('bio', 'posts', 'courses', 'totalEC'));
@@ -84,6 +85,42 @@ class PortfolioController extends Controller
         $post->update($validated);
 
         return redirect()->back()->with('success', 'Workflow state updated!');
+    }
+
+    // this one is just a update for making the updating in owner page more easy
+    // it used to update everyhting individually now it makes it just one button click and everything gets updated
+    public function bulkUpdatePosts(Request $request)
+    {
+        $this->authorizeOwner();
+
+        $validated = $request->validate([
+            'posts' => 'required|array',
+            'posts.*.title' => 'required|string|max:255',
+            'posts.*.content' => 'required|string',
+            'posts.*.status' => 'required|in:draft,review,published',
+        ]);
+
+        foreach ($request->input('posts') as $id => $data) {
+            $post = Post::find($id);
+            if ($post) {
+                $post->update([
+                    'title' => $data['title'],
+                    'content' => $data['content'],
+                    'status' => $data['status'],
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('success', 'All selected blog articles have been updated.');
+    }
+
+    public function destroyPost(Post $post)
+    {
+        $this->authorizeOwner();
+
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Article removed successfully from database.');
     }
 
     // sTudy Track Dashboard
