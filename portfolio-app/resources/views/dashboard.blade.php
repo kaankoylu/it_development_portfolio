@@ -4,14 +4,16 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    <div class="p-6 text-gray-900">
+        {{ __("You're logged in!") }}
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+        <hr style="margin: 20px 0;">
+
+        <h3><strong>Portfolio Owner Action Tools</strong></h3>
+        <p>Use the links below to access your protected application administration views:</p>
+        <ul>
+            <li><a href="/owner/dashboard" style="color: blue; text-decoration: underline;">Go to Portfolio Control Hub Console</a></li>
+            <li><a href="/" style="color: blue; text-decoration: underline;">View Public Frontend Showcase Site</a></li>
+        </ul>
     </div>
 </x-app-layout>

@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
 
         // creating the admin profile
         User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'Marilyn Monroe',
+            'email' => 'admin@showcase.com',
             'password' => Hash::make('password'),
         ]);
 

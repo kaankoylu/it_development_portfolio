@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('manage-portfolio', function (User $user) {
-            // For testing, you can assign an 'is_admin' column or match your email
+            // For testing
             return $user->email === 'admin@showcase.com';
         });
     }
