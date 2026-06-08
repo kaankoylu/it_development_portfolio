@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
         Biography::updateOrCreate(
             ['id' => 1],
             [
-                'full_name' => 'John Doe',
-                'title' => 'Software Engineer in Training',
+                'full_name' => 'Marilyn Monroe',
+                'title' => 'singer',
                 'bio_text' => 'Welcome to my raw portfolio showcase app built with Laravel Sail.',
                 'skills' => 'PHP, Laravel, Docker, Arch Linux'
             ]
