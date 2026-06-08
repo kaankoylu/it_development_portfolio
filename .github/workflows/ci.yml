@@ -20,7 +20,7 @@ jobs:
         tools: phpstan, phpcs, composer
 
     - name: Copy Environment conf file as a new instead of .example
-      run: cp .env.example .env
+      run: cp portfolio-app/.env.example portfolio-app/.env
 
     - name: Installing Project Dependencies
       run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
