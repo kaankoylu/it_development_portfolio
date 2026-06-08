@@ -141,7 +141,9 @@ class PortfolioController extends Controller
     }
 
     private function authorizeOwner(): void
-    {if (!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::user()->email !== 'admin@showcase.com') {
-        abort(403, 'Unauthorized action. OWASP A01 Access Control Check Failed.');
-    }}
+    {
+        if (!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::user()->email !== 'admin@showcase.com') {
+            abort(403, 'Unauthorized action. OWASP A01 Access Control Check Failed.');
+        }
+    }
 }
