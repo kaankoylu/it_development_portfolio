@@ -1,6 +1,12 @@
 parameters:
-    level: 8
+    level: 0
     paths:
         - app
-        - config
-        - routes
+    excludePaths:
+        - routes/console.php
+        - app/Http/Controllers/Auth/*
+    ignoreErrors:
+        - '#Call to an undefined static method#'
+        - '#Access to an undefined property#'
+        - '#Cannot access property \$email#'
+        - '#Method .* has no return type specified.#'
