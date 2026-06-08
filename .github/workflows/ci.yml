@@ -10,7 +10,7 @@ jobs:
   compliance-matrix:
     runs-on: ubuntu-latest
 
-    # Setting the root the sub older instread of current folder
+    # Setting the root the sub-folder
     defaults:
       run:
         working-directory: portfolio-app
@@ -21,7 +21,7 @@ jobs:
     - name: Setup PHP Environment
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2'
+        php-version: '8.4' # Updated from 8.2 because i was getting errors.
         tools: phpstan, phpcs, composer
 
     - name: Copy Environment conf file as a new instead of .example
