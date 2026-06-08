@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2b2b2b6c;
+    background-image: url("/images/background.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+h2 {
+    font-size: 20px;
+}
+li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+/* ----------------------UPPER PANEL------------------------ */
+.top_bar {
+    background-color: #00000071;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    user-select: none;
+}
+.main_label h1 {
+    font-size: 50px;
+    margin: 0;
+    transition: 0.3s;
+}
+.main_label:hover {
+    color: rgba(140, 0, 255, 0.349);
+}
+
+/* -----------------/UPPER PANEL---------------------- */
+
+/* -----------------BUTTONS---------------- */
+
+.buttons button {
+    background-color: #ffffff41;
+    color: rgba(255, 255, 255, 0.76);
+    border: none;
+    border-color: rgba(255, 255, 255, 0);
+    outline: none;
+    padding: 20px 40px 20px 40px;
+    margin-right: 200px;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: 0.3s;
+    font-size: 20px;
+    border-style:hidden;
+}
+.buttons button:hover {    
+    color: white;
+}
+#profile_button {
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#profile_button:hover {
+    background-color: rgba(145, 6, 6, 0.301);
+}
+#profile_button img {
+    margin-top: 0px;
+    margin-right: 3px;
+    width: 40px;
+    height: 40px;
+}
+#dashboard_button {
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#dashboard_button:hover {
+    background-color: rgba(4, 109, 69, 0.314);
+}
+#dashboard_button img {
+    margin-top: 0px;
+    margin-right: 3px;
+    width: 40px;
+    height: 40px;
+}
+#faq_button {
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#faq_button:hover {
+    background-color: rgba(7, 73, 216, 0.314);
+}
+#faq_button img {
+    width: 40px;
+    height: 40px;
+}
+#blog_button{
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#blog_button:hover{
+    background-color: rgba(5, 245, 185, 0.314);
+}
+#blog_button img {
+    width: 40px;
+    height: 40px;
+}
+aside  img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/*-------------- SCROLL BAR ------------------*/
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #808080;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #505050;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+/* -------------/SCROLL BAR----------------- */
+#main_page{
+    margin-left: 19%;
+    margin-top: 1%;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    padding-bottom: 14%;
+    transition: 0.1s;
+}
+#main_page .main_subject{
+    color: rgb(255, 255, 255);
+    font-size: 90px;
+    transition: 0.3;
+    margin-bottom: 1%;
+}
+.subject{
+    font-size: 50px;
+    color: rgb(252, 252, 252);
+}
+.list{
+    font-size: 30px;
+    color: rgb(255, 255, 255)
+}
+.list_elements{
+    padding: 20px 30px 20px 30px;
+    margin-left: 0%;
+    background-color: #00000071;
+    display: inline-block;
+    border-radius: 14px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    transition: 0.3s ;
+}
+.main_text{
+    background-color: #00000071;
+    border-radius: 14px;
+    border-bottom-left-radius: 0px;
+    padding: 1% 1% 1% 1%;
+    margin-right: 4%;
+    transition: 0.4s;
+}
+.list_elements:hover{background-color: rgba(32, 32, 32, 0.500)}
+.main_text:hover{background-color: rgba(32, 32, 32, 0.500);}
+.swot_subject{
+    color: white;
+}
+.swot_content li{
+    font-size: 25px;
+    color: black;
+}
