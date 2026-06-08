@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cards_aside.css') }}">
     <link rel="stylesheet" href="{{ asset('css/card_contents.css') }}">
+
+    <!-- i just realised website sometimes slides towards right or left, to limit that i am putting this one here to limit the page only
+     to go up or down not right or left -->
+    <style>
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,10 +40,10 @@
             </button>
 
             @auth
-            <a href="{{ route('owner.dashboard') }}" style="margin-left: 15px; text-decoration: none; font-weight: bold; color: gold; font-family: sans-serif; font-size: 14px; vertical-align: middle;">Admin</a>
+            <a href="{{ route('owner.dashboard') }}" style="margin-left: 15px; text-decoration: none; font-weight: bold; color: rgba(255, 255, 255, 0.25); font-family: sans-serif; font-size: 14px; vertical-align: middle; transition: color 0.3s ease;" onmouseover="this.style.color='rgba(255, 255, 255, 0.85)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.25)'">Owner Login</a>
             @else
             <a href="{{ route('login') }}" style="margin-left: 15px; text-decoration: none; font-weight: bold; color: #fff; font-family: sans-serif; font-size: 14px; vertical-align: middle;">Login</a>
-            <a href="{{ route('register') }}" style="margin-left: 10px; text-decoration: none; font-weight: bold; color: #fff; font-family: sans-serif; font-size: 14px; vertical-align: middle;">Register</a>
+            <!-- <a href="{{ route('register') }}" style="margin-left: 10px; text-decoration: none; font-weight: bold; color: #fff; font-family: sans-serif; font-size: 14px; vertical-align: middle;">Register</a> -->
             @endauth
         </div>
     </div>
