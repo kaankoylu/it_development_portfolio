@@ -1,0 +1,114 @@
+.login-center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    padding: 35px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.login-card h2 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-family: sans-serif;
+}
+
+.login-input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 6px;
+    color: #fff !important;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.login-input:focus {
+    border-color: #fff !important;
+    outline: none;
+}
+
+.remember-me-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    color: #aaa;
+    font-size: 13px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.remember-me-group input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.login-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-submit-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 24px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-family: sans-serif;
+}
+
+.login-submit-btn:hover {
+    opacity: 0.85;
+}
+
+.forgot-link {
+    color: #888;
+    font-size: 13px;
+    text-decoration: none;
+    font-family: sans-serif;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.error-msg {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 5px;
+    font-family: sans-serif;
+}

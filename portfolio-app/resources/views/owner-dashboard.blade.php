@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Owner Dashboard - Control Console</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cards_aside.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/card_contents.css') }}">
+@section('title', 'Owner Dashboard - Control Console')
+
+@section('styles')
     <style>
         .main_page {
             margin-left: auto !important;
@@ -16,7 +11,6 @@
             max-width: 1200px;
             padding-top: 30px;
         }
-
 
         .admin-card {
             background: rgba(255, 255, 255, 0.08);
@@ -108,39 +102,10 @@
             border-radius: 6px;
             margin-bottom: 20px;
         }
-
-
-        /* i just realised website sometimes slides towards right or left, to limit that i am putting this one here to limit the page only
-        to go up or down not right or left */
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-            position: relative;
-        }
     </style>
+@endsection
 
-</head>
-
-<body>
-    <div class="top_bar">
-        <div class="main_label" id="label_home">
-            <h1><a href="/" style="color: inherit; text-decoration: none;">Project Site</a></h1>
-        </div>
-        <div class="buttons" style="display: flex; align-items: center;">
-            <a href="/" style="text-decoration: none; font-weight: bold; color: #fff; font-family: sans-serif; font-size: 14px; vertical-align: middle; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
-                Back to Public View
-            </a>
-
-            <form action="{{ route('logout') }}" method="POST" style="display: inline; margin-left: 20px;">
-                @csrf
-                <button type="submit" style="background: none; border: none; color: #fff; cursor: pointer; font-weight: bold; font-family: sans-serif; font-size: 14px; vertical-align: middle; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
-                    Logout
-                </button>
-            </form>
-        </div>
-    </div>
-
+@section('content')
     <div class="main_page" id="main_page">
         <div class="main_text" style="margin-bottom: 30px;">
             <p class="main_subject">Portfolio Control Console</p>
@@ -266,7 +231,4 @@
             </div>
         </div>
     </div>
-
-</body>
-
-</html>
+@endsection
