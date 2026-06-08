@@ -24,7 +24,8 @@ class PortfolioController extends Controller
         $courses = CourseProgress::all();
 
         // this one calculates dashboard status by the credis earned, only sums up if the course marked completed
-        // in case the grade is low and course is completed it doesnt matter. it just sums up the credits of the calsses that marked as complet
+        // in case the grade is low and course is completed it doesnt matter.
+        // it just sums up the credits of the calsses that marked as complete
         $totalEC = $courses->where('status', 'completed')->sum('credits_ec');
 
         return view('welcome', compact('bio', 'posts', 'courses', 'totalEC'));
@@ -142,7 +143,8 @@ class PortfolioController extends Controller
 
     private function authorizeOwner(): void
     {
-        if (!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::user()->email !== 'admin@showcase.com') {
+        if (!\Illuminate\Support\Facades\Auth::check()
+            || \Illuminate\Support\Facades\Auth::user()->email !== 'admin@showcase.com') {
             abort(403, 'Unauthorized action. OWASP A01 Access Control Check Failed.');
         }
     }
